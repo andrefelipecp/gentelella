@@ -1,0 +1,12 @@
+{
+	"titulo-visualizar" : "View PessoaExterna",
+	"titulo-alterar" : "Update PessoaExterna",
+	"titulo-incluir" : "Insert PessoaExterna",
+	"titulo-pesquisar" : "Search PessoaExternas",
+	"link-lingua" : "Change Country",
+	
+	"dados-orgaos-entidade" : "Dados Órgão/Entidade",
+	"PessoaExterna-nome" : "Nome",
+	"PessoaExterna-placeholder-nome" : "Informe o nome",
+	
+}

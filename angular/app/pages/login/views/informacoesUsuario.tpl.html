@@ -1,0 +1,96 @@
+<style>
+.modal {
+	width: 60% !important;
+	left: 40%;
+	right: 40%;
+}
+</style>
+<div class="informacoes-usuario">
+	<div class="span12">
+		<label><b>Nome:</b>{{ usuarioAutenticado.nome }}</label>
+	</div>
+	<div class="span4">
+		<label><b>CPF:</b> {{ usuarioAutenticado.cpf }}</label>
+	</div>
+	<div class="span6">
+		<label><b>Perfil Selecionado:</b> {{
+			usuarioAutenticado.perfil.nome }}</label>
+	</div>
+	<div class="span4">
+		<label><b>Sigla perfil:</b> {{ usuarioAutenticado.perfil.sigla
+			}}</label>
+	</div>
+	<div class="span5">
+		<label><b>Esfera:</b> {{ usuarioAutenticado.esfera.nome }}</label>
+	</div>
+	<div class="span12">
+		<label><b>Email:</b> <a
+			href="mailto:{{ usuarioAutenticado.email }}" target="_blank"> {{
+				usuarioAutenticado.email }} </a> </label>
+	</div>
+	<div class="span12" ng-if="!possuiVariasEsfera">
+		<label><b>Escolha o seu Perfil:</b></label>
+		<table class="table ms-grid">
+			<thead>
+				<tr>
+					<th class="text-center">
+						<div>Nome Perfil</div>
+					</th>
+					<th class="text-center">
+						<div>Sigla Perfil</div>
+					</th>
+					<th class="text-center">
+						<div>Ação</div>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="perfil in listaPerfils">
+					<td>{{perfil.nome}}</td>
+					<td>{{perfil.sigla}}</td>
+					<td>
+						<button class='btn btn-sm' ng-click="alterarPerfil(perfil)">
+							<span class='icon-checkmark'></span>
+						</button>
+					</td>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="span12" ng-if="possuiVariasEsfera">
+		<label><b>Escolha a sua Esfera:</b></label>
+		<table class="table ms-grid">
+			<thead>
+				<tr>
+					<th class="text-center sortable">
+						<div>#</div>
+					</th>
+					<th class="text-center sortable">
+						<div>Nome Esfera</div>
+					</th>
+					<th class="text-center">
+						<div>Ação</div>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="esfera in listaEsferas">
+					<td>{{$index+1}}</td>
+					<td>{{esfera.nome}}</td>
+					<td>
+						<button class='btn btn-sm' ng-click="alterarEsfera(esfera)">
+							<span class='icon-checkmark'></span>
+						</button>
+					</td>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="btn-form-right" ng-if="possuiVariasEsfera">
+		<br>
+		<button class="btn btn-primary" type="button" ng-click="voltar()">
+			Voltar</button>
+	</div>
+</div>

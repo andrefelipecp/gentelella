@@ -1,0 +1,12 @@
+{
+	"titulo-selecionar-perfil" : "Selecione o Perfil Desejado",
+	"perfil" : "Perfil",
+	"uf" : "UF",
+	"acessar" : "Acessar",
+	"esqueceu_senha" : "Esqueceu sua senha?",
+	"sem_cadastro" : "Ainda não está cadastrado?",
+	"MSG_E035" : "Não foi possível validar o usuário no cadastro de servidores do Ministério da Saúde. Favor verificar os dados do usuário no SIARH.",
+	
+	"hint-login" : "Identificação do usuário",
+	"hint-senha" : "Senha de acesso do usuário"
+}

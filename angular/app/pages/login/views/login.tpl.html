@@ -1,0 +1,57 @@
+<div class="container" ui-view>
+  <div class="row">
+
+    <div class="span4">
+      <div id="BoxAreaLogin">
+        <div class="BoxAreaLogin_titulo">
+          <h2>Digite seu e-mail e sua senha para acessar a área restrita:</h2>
+        </div>
+        <div class="BoxAreaLogin_content logar">
+          <form name="msLoginForm" novalidate ng-submit="login()">
+            <ul>
+              <li class="login">
+                <label class="BoxAreaLogin_email_senha obrigatorio" for="email">E-mail:</label>
+                <!-- FIXME Verificar com a equipe do MS o CSS errado -->
+                <span class="iconelogin ms-icone-usuario" style="top:28px"></span> 
+                <input tabindex="1" class="input-xlarge campo_email" name="email" id="email" type="text" validator="[email,required]" ng-model="formLogin.email"
+                maxlength="50" title="{{'hint-login'|translate}}" />
+              </li>
+              <li class="senha">
+                <label class="BoxAreaLogin_email_senha obrigatorio" for="senha">Senha:</label>
+                <!-- FIXME Verificar com a equipe do MS o CSS errado -->
+                <span class="iconelogin ms-icone-fechado" style="top:28px"></span>
+                <input tabindex="2"  type="password" class="input-xlarge campo_senha" name="senha" id="senha" validator="[required]" ng-model="formLogin.password"
+                maxlength="20" title="{{'hint-senha'|translate}}"/>
+              </li>
+              <li>
+                <div id="BoxAreaLogin_EsqueceuEmail_e_Botao">
+                  <div id="BoxAreaLogin_EsqueceuEmail">
+                    <a href="{{app.scpa.novo_usuario}}" role="button" target="_blank">Ainda não está cadastrado?</a>
+                    <a href="{{app.scpa.trocar_senha}}" role="button" target="_blank">Esqueceu sua senha? </a>
+                  </div>
+                    <button  tabindex="3"  type="submit"  class="btn btn-primary pull-right">ENTRAR</button>
+                </div>
+              </li>
+            </ul>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="span8">
+        <div class="conteudo-box">
+          <div class="span12">
+              <p class="BoxAreaLogin_Info_titulo">Acesso ao Sistema</p>
+              <p class="loginInformacoes">É necessário que o usuário informe seu e-mail e senha.<br />
+              Esqueceu a senha: Clique em &quot;Esqueceu sua senha&quot; e informe seu e-mail para receber uma nova senha de acesso ao sistema.</p>
+              <hr class="BoxAreaLogin_Info_barra"/>
+              <p class="BoxAreaLogin_Info_titulo">Usuário que não possui acesso</p>
+              <p class="loginInformacoes">Realize o cadastro clicando em &quot;Ainda não está cadastrado?&quot;<br />
+              Após o login, clique em &quot;solicitar acesso aos sistemas&quot;.<br />
+              Aguarde o e-mail com a aprovação ou não da solicitação de acesso.</p>
+          </div>
+        </div>
+    </div>
+
+  </div>
+</div>

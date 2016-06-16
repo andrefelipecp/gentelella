@@ -1,0 +1,412 @@
+<div class="container">
+	<div class="row">
+		<div class="span12">
+			<strong class="title">Seja bem-vindo ao Sistema!</strong>
+		</div>
+
+	</div>
+	<div class="row">
+		<div class="span12">
+			<div class="box conteudo-box" style="min-height: 261px;">		
+				<div class="span12">
+					<button class="btn btn-primary" type="button" pesquisa-pessoa selecao="pessoa">{{'pessoa.titulo' | translate}} </button>
+					<h4>Pessoa Selecionada: </h4>
+					<table class="table ms-grid" ng-if="pessoa && pessoa.idIndio != null">
+						<thead>
+							<tr>
+								<th>{{'pessoa.nome' | translate}}</th>
+								<th>{{'pessoa.etnia' | translate}}</th>
+								<th>{{'pessoa.data-nascimento' | translate}}</th>
+								<th>{{'pessoa.sexo' | translate}}</th>
+								<th>{{'pessoa.cartao-sus' | translate}}</th>
+								<th>{{'pessoa.dsei' | translate}}</th>
+								<th>{{'pessoa.polo' | translate}}</th>
+								<th>{{'pessoa.aldeia' | translate}}</th>
+								<th>{{'pessoa.pne' | translate}}</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>{{pessoa.noIndio}} </td>
+								<td>{{pessoa.dsEtnia}}</td>
+								<td>{{pessoa.dataNascimentoIndio | date : 'dd/MM/yyyy'}}</td>
+								<td>{{pessoa.sexoIndio.labelKey | translate}}</td>
+								<td>{{pessoa.nuCartaoSusStr}}</td>
+								<td>{{pessoa.dsDsei}}</td>
+								<td>{{pessoa.dsPoloBase}}</td>
+								<td>{{pessoa.noAldeia}}</td>
+								<td>
+									<span ng-if="pessoa.stPne">{{pessoa.stPne.labelKey | translate}}</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<table class="table ms-grid" ng-if="pessoa && pessoa.id != null">
+						<thead>
+							<tr>
+								<th>{{'pessoa.nome' | translate}}</th>
+								<th>{{'pessoa.sexo' | translate}}</th>
+								<th>{{'pessoa.cbo' | translate}}</th>
+								<th>{{'pessoa.cbo-descricao' | translate}}</th>
+								<th>{{'pessoa.pne' | translate}}</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>{{pessoa.nomePessoa}}</td>
+								<td>{{pessoa.sexoPessoa.labelKey | translate}}</td>
+								<td>{{pessoa.idCbo}}</td>
+								<td>{{pessoa.dsCbo}}</td>
+								<td>
+									<span ng-if="pessoa.stPne">{{pessoa.stPne.labelKey | translate}}</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<h3></h3>
+		        </div>
+		        <div class="span12">
+					<button class="btn btn-primary" type="button" pesquisa-diagnostico selecao="diagnostico">{{'diagnostico.titulo' | translate}}</button>
+					<h4>Diagnosticos Selecionados:</h4>
+					<table class="table ms-grid" ng-if="diagnostico">
+						<thead>
+							<tr>
+								<th>{{'resultado.diagnostico.cid' | translate}}</th>
+								<th>{{'resultado.diagnostico.descricao' | translate}}</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="d in diagnostico">
+								<td>{{d.id}}</td>
+								<td>{{d.noCategoriaSubcategoria}}</td>
+							</tr>
+						</tbody>
+					</table>
+					<h3></h3>
+		        </div>
+		        <div class="span12" style="display: table;">
+					<button class="btn btn-primary" type="button" pesquisa-procedimento selecao="procedimento">{{'procedimento.titulo' | translate}}</button>
+					<h4>Procedimento Selecionado:</h4>
+					<table class="table ms-grid" ng-if="procedimento">
+						<thead>
+							<tr>
+								<th>{{'procedimento.codigo' | translate}}</th>
+								<th>{{'resultado.procedimento.nome' | translate}}</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>{{procedimento.id.coProcedimento}}</td>
+								<td>{{procedimento.noProcedimento}}</td>
+							</tr>
+						</tbody>
+					</table>
+					<h3></h3>
+		        </div>
+		        <div class="span12">
+					<button class="btn btn-primary" type="button" pesquisa-cnes selecao="cnes">{{'cnes.titulo' | translate}}</button>
+					<h4>CNES Selecionado:</h4>
+					<table class="table ms-grid" ng-if="cnes">
+						<thead>
+							<tr>
+								<th>{{'cnes.nome' | translate}}</th>
+								<th>{{'cnes.uf' | translate}}</th>
+								<th>{{'cnes.municipio' | translate}}</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>{{cnes.nome}}</td>
+								<td>{{cnes.ufId}}</td>
+								<td>{{cnes.municipioId}}</td>
+							</tr>
+						</tbody>
+					</table>
+					<h3></h3>
+		        </div>
+		        <div class="span12">
+					<button class="btn btn-primary" type="button" pesquisa-unidade selecao="unidade">{{'unidade.titulo' | translate}}</button>
+					<h4>Unidade Selecionada:</h4>
+					<table class="table ms-grid" ng-if="unidade">
+						<thead>
+							<tr>
+								<th>{{'unidade.nome' | translate}}</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>{{unidade.nome}}</td>
+							</tr>
+						</tbody>
+					</table>
+					<h3></h3>
+		        </div>
+				<div class="span12">
+					<button class="btn btn-primary" type="button" manter-transporte selecao="transporte" template="I">{{'transporte.titulo-incluir' | translate}}</button>
+					<h4>Transporte Incluso:</h4>
+					<div ng-show="transporte.tipoTransporte == 1 && transporte.tipoVeiculo == 1">
+						<table class="table ms-grid">
+							<thead>
+								<tr>
+									<th>{{'transporte.tipo-transporte' |translate}}</th>
+									<th>{{'transporte.tipo-veiculo' |translate}}</th>
+									<th>{{'transporte.numero-transporte' |translate}}</th>
+									<th>{{'transporte.tipo-ambulancia' |translate}}</th>
+									<th>{{'transporte.justificativa-tipo-transporte' |translate}}</th>
+									<th>{{'label.opcoes' |translate}}</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th>{{'transporte.radio-terrestre' |translate}}</th>
+									<th>{{'transporte.radio-ambulancia' |translate}}</th>
+									<th>{{transporte.numeroSolicitacaoSiasi}}</th>
+									<th>
+										<span ng-if="transporte.tipoAmbulancia == 1">
+											{{'transporte.radio-casai' |translate}}
+										</span>
+										<span ng-if="transporte.tipoAmbulancia == 2">
+											{{'transporte.radio-redesus' |translate}}
+										</span>
+									</th>
+									<th>{{transporte.justificativa}}</th>
+					                <th>
+			                            <a class='btn btn-sm' title="{{'hint-alterar'|translate}}" manter-transporte selecao="transporte" template="A" idTransporte="{{transporte.idTransporte}}"><span class='ms-icone-editar'></span></a>&nbsp;
+			                            <a class='btn btn-sm' title="{{'hint-visualisar'|translate}}" manter-transporte selecao="transporte" template="V" idTransporte="{{transporte.idTransporte}}"><span class='ms-icone-buscar'></span></a>&nbsp;
+			                            <!-- 
+			                            <a class='btn btn-sm' title="{{'hint-excluir'|translate}}" manter-transporte selecao="transporte" template="E" idTransporte="{{transporte.idTransporte}}"><span class='ms-icone-lixeira'></span></a>
+			                             -->
+			                            
+					                </th>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					
+
+					<div ng-show="transporte.tipoTransporte == 1 && transporte.tipoVeiculo == 2">
+						<table  class="table ms-grid">
+							
+							<thead>
+								<tr>
+									<th>{{'transporte.tipo-transporte' |translate}}</th>
+									<th>{{'transporte.tipo-veiculo' |translate}}</th>
+									<th>{{'transporte.numero-transporte' |translate}}</th>
+									<th>{{'transporte.justificativa-tipo-transporte' |translate}}</th>
+									<th>{{'label.opcoes' |translate}}</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th>{{'transporte.radio-terrestre' |translate}}</th>
+									<th>{{'transporte.radio-carro' |translate}}</th>
+									<th>{{transporte.numeroSolicitacaoSiasi}}</th>
+									<th>{{transporte.justificativa}}</th>
+					                <th>
+		                            <a class='btn btn-sm' title="{{'hint-alterar'|translate}}" manter-transporte selecao="transporte" template="A" idTransporte="{{transporte.idTransporte}}"><span class='ms-icone-editar'></span></a>&nbsp;
+		                            <a class='btn btn-sm' title="{{'hint-visualisar'|translate}}" manter-transporte selecao="transporte" template="V" idTransporte="{{transporte.idTransporte}}"><span class='ms-icone-buscar'></span></a>&nbsp;
+		                           <!-- 
+		                            <a class='btn btn-sm' title="{{'hint-excluir'|translate}}" manter-transporte selecao="transporte" template="E" idTransporte="{{transporte.idTransporte}}"><span class='ms-icone-lixeira'></span></a>
+		                            -->		                           
+					                </th>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					
+					<div ng-show="transporte.tipoTransporte == 1 && transporte.tipoVeiculo == 3">
+						<table class="table ms-grid">
+							<thead>
+								<tr>
+									<th>{{'transporte.tipo-transporte' |translate}}</th>
+									<th>{{'transporte.tipo-veiculo' |translate}}</th>
+									<th>{{'transporte.nome-empresa' |translate}}</th>
+									<th>{{'transporte.data-embarque' |translate}}</th>
+									<th>{{'transporte.hora-embarque' |translate}}</th>
+									<th>{{'transporte.data-desembarque' |translate}}</th>
+									<th>{{'transporte.hora-desembarque' |translate}}</th>
+									<th>{{'transporte.justificativa-tipo-transporte' |translate}}</th>
+									<th>{{'label.opcoes' |translate}}</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th>{{'transporte.radio-terrestre' |translate}}</th>
+									<th>{{'transporte.radio-onibus' |translate}}</th>									
+									<th>{{transporte.transporteOnibus.companhiaOnibus.descricao}}</th>
+									<th>{{transporte.dataEmbarque | date:'dd-MM-yyyy'}}</th>
+									<th>{{transporte.dataEmbarque | date:'HH:mm:ss'}}</th>
+									<th>{{transporte.dataDesembarque | date:'dd-MM-yyyy'}}</th>
+									<th>{{transporte.dataDesembarque | date:'HH:mm:ss'}}</th>
+									<th>{{transporte.justificativa}}</th>
+					                <th>
+			                            <a class='btn btn-sm' title="{{'hint-alterar'|translate}}" manter-transporte selecao="transporte" template="A" idTransporte="{{transporte.idTransporte}}"><span class='ms-icone-editar'></span></a>&nbsp;
+			                            <a class='btn btn-sm' title="{{'hint-visualisar'|translate}}" manter-transporte selecao="transporte" template="V" idTransporte="{{transporte.idTransporte}}"><span class='ms-icone-buscar'></span></a>&nbsp;
+			                            <!-- 
+			                            <a class='btn btn-sm' title="{{'hint-excluir'|translate}}" manter-transporte selecao="transporte" template="E" idTransporte="{{transporte.idTransporte}}"><span class='ms-icone-lixeira'></span></a>
+			                             -->
+			                            
+					                </th>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					
+					<div ng-show="transporte.tipoTransporte == 2 && transporte.tipoVeiculo == null">
+						<table class="table ms-grid">
+							<thead>
+								<tr>
+									<th>{{'transporte.tipo-transporte' |translate}}</th>
+									<th>{{'transporte.companhia-aerea' |translate}}</th>
+									<th>{{'transporte.numero-voo' |translate}}</th>
+									<th>{{'transporte.data-embarque' |translate}}</th>
+									<th>{{'transporte.hora-embarque' |translate}}</th>
+									<th>{{'transporte.data-desembarque' |translate}}</th>
+									<th>{{'transporte.hora-desembarque' |translate}}</th>
+									<th>{{'transporte.justificativa-tipo-transporte' |translate}}</th>
+									<th>{{'label.opcoes' |translate}}</th>
+								</tr>
+							</thead>
+							<tbody >
+								<tr >
+									<th>{{'transporte.radio-aereo' |translate}}</th>
+									<th>{{transporte.transporteAereo.companhiaAereaDescricao}}</th>
+									<th>{{transporte.transporteAereo.numeroVoo}}</th>
+									<th>{{transporte.dataEmbarque | date:'dd-MM-yyyy'}}</th>
+									<th>{{transporte.dataEmbarque | date:'HH:mm:ss'}}</th>
+									<th>{{transporte.dataDesembarque | date:'dd-MM-yyyy'}}</th>
+									<th>{{transporte.dataDesembarque | date:'HH:mm:ss'}}</th>
+									<th>{{transporte.justificativa}}</th>
+					                <th>
+			                            <a class='btn btn-sm' title="{{'hint-alterar'|translate}}" manter-transporte selecao="transporte" template="A" idTransporte="{{transporte.idTransporte}}"><span class='ms-icone-editar'></span></a>&nbsp;
+			                            <a class='btn btn-sm' title="{{'hint-visualisar'|translate}}" manter-transporte selecao="transporte" template="V" idTransporte="{{transporte.idTransporte}}"><span class='ms-icone-buscar'></span></a>&nbsp;
+			                            <!-- 
+			                            <a class='btn btn-sm' title="{{'hint-excluir'|translate}}" manter-transporte selecao="transporte" template="E" idTransporte="{{transporte.idTransporte}}"><span class='ms-icone-lixeira'></span></a>
+			                             -->
+			                            
+					                </th>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					
+					<div ng-show="transporte.tipoTransporte == 3 ">
+						<table class="table ms-grid">
+							<thead>
+								<tr>
+									<th>{{'transporte.tipo-transporte' |translate}}</th>
+									<th>{{'transporte.tipo-veiculo' |translate}}</th>
+									<th>{{'transporte.justificativa-tipo-transporte' |translate}}</th>
+									<th>{{'label.opcoes' |translate}}</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th>{{'transporte.radio-fluvial' |translate}}</th>
+									<th>{{'transporte.fluvial-barco' |translate}}</th>
+									<th>{{transporte.justificativa}}</th>
+					                <th>
+			                            <a class='btn btn-sm' title="{{'hint-alterar'|translate}}" manter-transporte selecao="transporte" template="A" idTransporte="{{transporte.idTransporte}}"><span class='ms-icone-editar'></span></a>&nbsp;
+			                            <a class='btn btn-sm' title="{{'hint-visualisar'|translate}}" manter-transporte selecao="transporte" template="V" idTransporte="{{transporte.idTransporte}}"><span class='ms-icone-buscar'></span></a>&nbsp;
+			                           <!-- 
+			                            <a class='btn btn-sm' title="{{'hint-excluir'|translate}}" manter-transporte selecao="transporte" template="E" idTransporte="{{transporte.idTransporte}}"><span class='ms-icone-lixeira'></span></a>
+			                            -->
+			                           
+					                </th>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					
+				<h3></h3>
+				</div>
+		        <div class="span12">
+		        	<button class="btn btn-primary" type="button" manter-acompanhante selecao="acompanhante" acao="I" paciente-solicitacao="1">{{'acompanhante.incluir-acompanhante' | translate}}</button>
+					
+					<!-- 
+					<button class="btn btn-primary" type="button" manter-acompanhante selecao="acompanhante" acao="I" id-paci="1">{{'acompanhante.incluir-acompanhante' | translate}}</button>
+					 -->
+					<h4>Acompanhante Incluido/Alterado: </h4>
+					<table class="table ms-grid" ng-if="acompanhante">
+						<thead>
+							<tr>
+								<th>{{'acompanhante.nome' | translate}}</th>
+								<th>{{'acompanhante.sexo' | translate}}</th>
+								<th>{{'acompanhante.idade' | translate}}</th>
+								<th>{{'acompanhante.pne' | translate}}</th>
+								<th>{{'label.acao' | translate}}</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>{{acompanhante.nome}}</td>
+								<td>{{acompanhante.sexo.labelKey | translate}}</td>
+								<td>
+									<siasi-idade class="span6" ng-model="acompanhante.dataNascimento" tipo="table"></siasi-idade>
+								</td>
+								<td>
+									<span ng-if="acompanhante.stNecessidadeEspecial == 'S'">{{'label.sim' | translate}}</span>
+									<span ng-if="acompanhante.stNecessidadeEspecial == 'N'">{{'label.nao' | translate}}</span>
+								</td>
+								<td>
+									 <a class='btn btn-sm' title="{{'hint-alterar'|translate}}" manter-acompanhante selecao="acompanhante" acao="A" id-acompanhante="{{acompanhante.codigoAcompanhante}}"><span class='ms-icone-editar'></span></a>&nbsp;
+			                         <a class='btn btn-sm' title="{{'hint-visualisar'|translate}}" manter-acompanhante acao="V" id-acompanhante="{{acompanhante.codigoAcompanhante}}"><span class='ms-icone-buscar'></span></a>&nbsp;
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<h3></h3>					 
+		        </div>
+		       
+		       
+					
+		       <!-- 
+		       EXEMPLOS DE LINKS
+		       
+		        <div class="span12">						
+					<hr>(1)<hr/>					 
+		        </div>
+		        <div class="span12">						
+					<h3><a ng-href="#/encaminhamento">Pesquisar solicitacao</a></h3>					 
+		        </div>	
+		        
+		        <div class="span12">												 										
+					<h3><a ng-href="#/encaminhamento">Manter Acompanhamento</a></h3>					 
+		        </div>	
+		        
+		        
+		       
+		        -->
+		       
+		        
+		        <!-- 
+		       		        
+		         <div class="span12">	
+					<button class="btn btn-primary" type="button" ng-click="criarsolicitacao()">solicitacao</button>						 					
+					<h4>solicitacao Incluido: </h4>
+					<h3></h3>					 
+		        </div>		     
+		        
+		        <div class="span12">	
+					<button class="btn btn-primary" type="button" ng-click="escolherAgendamento()">Agendamento</button>						 					
+					<h4>Agendamento Incluido: </h4>
+					<h3></h3>					 
+		        </div>		        
+		        		        
+		        
+		        	
+		        	<button class="btn btn-primary" type="button" pesquisa-pessoa>{{'agendamento.incluir-agendamento' | translate}}</button>
+					<span ms-seguranca roles="['ROLE_MAVFA']"></span>
+					<a class='btn btn-sm' ng-href="app/pages/agendamento/views/consultarAgendamento.tpl.html">Agendamento</a>
+					
+		        <div class="span12" title="EXEMPLOS DE TESTE">
+		       		<h4>EXEMPLOS DE TESTE4</h4>
+		        </div>
+		        <div class="span12">
+		        	<button class="btn btn-primary" type="button"  teste-manter-modal>Exemplos Teste 11:58</button>
+		        </div>
+		         -->
+			</div>
+		</div>
+	</div>
+</div>

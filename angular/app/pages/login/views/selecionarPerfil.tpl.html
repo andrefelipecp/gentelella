@@ -1,0 +1,37 @@
+<div class='container' ui-view>
+<div class="row">
+	<div class="span12">
+		<strong class="title">Selecione o Perfil Desejado</strong>
+	</div>
+</div>	
+	<div class='row'>
+		<div class="span12">
+        	<form name="selecionarPerfilForm"  novalidate ng-submit="selecionarPerfil()">
+		      <div class="box conteudo-box">
+		     	<div class="span12">
+					<div class="span4">
+						<label for="perfil">Perfil:<span class="text-danger">✱ </span></label>
+						<select ng-model="formPerfil.perfil" validator="[required]" id="perfil" name="perfil"  ng-change="carregaEsferas()" ng-options="p as p.nome for p in perfis" >
+							 <option value="">-- Selecione --</option>
+		                 </select>
+			        </div>
+		        </div>
+		        <div class="span12">
+					<div ng-if="formPerfil.perfil.isSelecionarEsfera" class="span4">
+						<label for="uf">UF:<span class="text-danger">✱ </span></label>
+						<select validator="[required]" ng-model="formPerfil.esfera" id="uf" name="uf" ng-options="e as e.nome for e in esferas">
+							 <option value="">-- Selecione --</option>
+		                 </select>
+			        </div>
+		       </div>
+		       <div class="span12">
+			       <div class="btn-form-right">
+		               	<button type="submit" class="btn btn-primary" tooltip="Acessar">Acessar</button>
+	               </div>
+               </div>
+		      </div>
+			</form>
+            
+		</div>
+	</div>
+</div>
